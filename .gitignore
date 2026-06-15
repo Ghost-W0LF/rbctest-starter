@@ -18,6 +18,7 @@ dist/
 *.egg-info/
 .eggs/
 *.egg
+.env.example
 
 # Testing / tooling
 .pytest_cache/
