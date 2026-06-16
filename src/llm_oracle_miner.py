@@ -4,7 +4,7 @@ import json
 import os
 from typing import Any
 
-from anthropic import Anthropic
+from groq import Groq
 
 
 def _fallback_constraints(schema: dict[str, Any], required_fields: list[str]) -> list[dict[str, Any]]:
@@ -65,13 +65,13 @@ def _fallback_constraints(schema: dict[str, Any], required_fields: list[str]) ->
 
 
 def mine_constraints_with_oc(
-    schema: dict[str, Any], required_fields: list[str], model: str = "claude-3-5-sonnet-latest"
+    schema: dict[str, Any], required_fields: list[str], model: str = "llama-3.3-70b-versatile"
 ) -> tuple[list[dict[str, Any]], str]:
-    api_key = os.getenv("ANTHROPIC_API_KEY", "").strip()
+    api_key = os.getenv("GROQ_API_KEY", "").strip()
     if not api_key:
         return _fallback_constraints(schema, required_fields), "fallback(no_api_key)"
 
-    client = Anthropic(api_key=api_key)
+    client = Groq(api_key=api_key)
     observation_prompt = f"""
 You are mining response-body test constraints from an OpenAPI response schema.
 Only output rules that are grounded in this schema.
@@ -92,13 +92,13 @@ Return ONLY valid JSON array. Each item must contain:
 - allowed_values (only for enum)
 """
 
-    observation = client.messages.create(
+    observation = client.chat.completions.create(
         model=model,
         max_tokens=1600,
         temperature=0,
         messages=[{"role": "user", "content": observation_prompt}],
     )
-    raw = observation.content[0].text.strip()
+    raw = (observation.choices[0].message.content or "").strip()
     proposed = _parse_json_array(raw)
 
     confirmation_prompt = f"""
@@ -116,13 +116,13 @@ Return ONLY valid JSON array with:
 - confirmed (true/false)
 - reason (short)
 """
-    confirmation = client.messages.create(
+    confirmation = client.chat.completions.create(
         model=model,
         max_tokens=1400,
         temperature=0,
         messages=[{"role": "user", "content": confirmation_prompt}],
     )
-    checks = _parse_json_array(confirmation.content[0].text.strip())
+    checks = _parse_json_array((confirmation.choices[0].message.content or "").strip())
     confirmed_map = {c["id"]: c for c in checks if c.get("confirmed") is True}
 
     confirmed_constraints: list[dict[str, Any]] = []
