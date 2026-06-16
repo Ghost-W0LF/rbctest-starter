@@ -70,7 +70,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--method", default="get", choices=["get", "post", "put", "patch", "delete"])
     parser.add_argument("--base-url", default="", help="Override base URL.")
     parser.add_argument("--path-param", default="id=1", help="Single path param in key=value form.")
-    parser.add_argument("--model", default="claude-3-5-sonnet-latest", help="Anthropic model name.")
+    parser.add_argument("--model", default="llama-3.3-70b-versatile", help="Groq model name.")
     parser.add_argument("--output-dir", default="output", help="Directory for generated artifacts.")
     parser.add_argument("--timeout", type=float, default=20.0)
     return parser.parse_args()
