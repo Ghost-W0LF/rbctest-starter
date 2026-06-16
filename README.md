@@ -19,7 +19,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
-# add ANTHROPIC_API_KEY in .env (optional but recommended)
+# add GROQ_API_KEY in .env (optional but recommended)
 python run.py
 ```
 
@@ -53,5 +53,5 @@ python run.py \
 
 ## Notes
 
-- If `ANTHROPIC_API_KEY` is missing, the tool uses a deterministic fallback miner (type/required/enum/email rules) so you can still run the flow end-to-end.
+- If `GROQ_API_KEY` is missing, the tool uses a deterministic fallback miner (type/required/enum/email rules) so you can still run the flow end-to-end.
 - Keep API keys, private URLs, and proprietary payloads out of the repo.
