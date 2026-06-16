@@ -42,11 +42,19 @@ paths:
                     type: string
                   address:
                     type: object
+                    required: [geo]
                     properties:
-                      city:
-                        type: string
+                      geo:
+                        type: object
+                        required: [lat, lng]
+                        properties:
+                          lat:
+                            type: number
+                          lng:
+                            type: number
                   company:
                     type: object
                     properties:
                       name:
                         type: string
+                        
