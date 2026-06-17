@@ -3,14 +3,34 @@ from __future__ import annotations
 import re
 from typing import Any
 
+_SEGMENT_RE = re.compile(r"^([^[]+)(?:\[(\d+)\])?$")
+
 
 def get_value_by_path(data: dict[str, Any], field_path: str) -> tuple[bool, Any]:
-    parts = field_path.split(".")
     current: Any = data
-    for part in parts:
-        if not isinstance(current, dict) or part not in current:
+    for part in field_path.split("."):
+        if not part:
             return False, None
-        current = current[part]
+
+        match = _SEGMENT_RE.match(part)
+        if not match:
+            return False, None
+
+        key = match.group(1)
+        index = match.group(2)
+
+        if not isinstance(current, dict) or key not in current:
+            return False, None
+        current = current[key]
+
+        if index is not None:
+            if not isinstance(current, list):
+                return False, None
+            idx = int(index)
+            if idx < 0 or idx >= len(current):
+                return False, None
+            current = current[idx]
+
     return True, current
 
 
@@ -32,6 +52,8 @@ def validate_constraints(response_json: dict[str, Any], constraints: list[dict[s
             if not exists:
                 ok = False
                 detail = f"missing field '{field}'"
+            elif value is None and c.get("nullable"):
+                ok = True
             else:
                 expected = c.get("expected_type")
                 ok = _matches_type(value, expected)
@@ -42,6 +64,8 @@ def validate_constraints(response_json: dict[str, Any], constraints: list[dict[s
             if not exists:
                 ok = False
                 detail = f"missing field '{field}'"
+            elif value is None and c.get("nullable"):
+                ok = True
             else:
                 allowed = c.get("allowed_values", [])
                 ok = value in allowed
@@ -52,6 +76,8 @@ def validate_constraints(response_json: dict[str, Any], constraints: list[dict[s
             if not exists:
                 ok = False
                 detail = f"missing field '{field}'"
+            elif value is None and c.get("nullable"):
+                ok = True
             else:
                 ok = isinstance(value, str) and bool(re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", value))
                 if not ok:
