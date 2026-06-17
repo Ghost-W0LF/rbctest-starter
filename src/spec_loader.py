@@ -16,15 +16,28 @@ class EndpointSchema:
     base_url: str
 
 
+def _resolve_spec_path(paths: dict[str, Any], endpoint: str) -> str:
+    path_only = endpoint.split("?", 1)[0]
+    candidates = [endpoint, path_only]
+    if path_only.endswith("/"):
+        candidates.append(path_only.rstrip("/"))
+    else:
+        candidates.append(f"{path_only}/")
+
+    for candidate in candidates:
+        if candidate in paths:
+            return candidate
+
+    raise ValueError(f"Endpoint '{endpoint}' not found in spec.")
+
+
 def load_endpoint_schema(spec_path: Path, endpoint: str, method: str = "get") -> EndpointSchema:
     data = yaml.safe_load(spec_path.read_text(encoding="utf-8"))
     method = method.lower()
 
     paths = data.get("paths", {})
-    if endpoint not in paths:
-        raise ValueError(f"Endpoint '{endpoint}' not found in spec.")
-
-    endpoint_data = paths[endpoint].get(method)
+    spec_path_key = _resolve_spec_path(paths, endpoint)
+    endpoint_data = paths[spec_path_key].get(method)
     if not endpoint_data:
         raise ValueError(f"Method '{method}' not found for endpoint '{endpoint}'.")
 
