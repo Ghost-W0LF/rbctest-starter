@@ -38,13 +38,19 @@ def load_endpoint_schema(spec_path: Path, endpoint: str, method: str = "get") ->
         raise ValueError("No application/json schema found for response.")
 
     required = schema.get("required", [])
+    response_schema = schema
+    if schema.get("type") == "array":
+        items = schema.get("items", {})
+        response_schema = items
+        required = items.get("required", [])
+
     servers = data.get("servers", [])
     base_url = servers[0]["url"] if servers else ""
 
     return EndpointSchema(
         path=endpoint,
         method=method,
-        response_schema=schema,
+        response_schema=response_schema,
         required_fields=required,
         base_url=base_url,
     )
