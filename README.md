@@ -5,7 +5,7 @@ Tiny, runnable starter that mirrors the core RBCTest loop:
 1. Read one OpenAPI response schema
 2. Mine response-body constraints (oracles) with an LLM
 3. Confirm constraints in a second pass (Observation-Confirmation style)
-4. Fetch a real API response
+4. Load a sanitized fixture response (or fetch live with `--live`)
 5. Validate PASS/FAIL and save artifacts
 
 This is a small learning/demo scaffold inspired by:
@@ -19,7 +19,7 @@ python3 -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env
-# add GROQ_API_KEY in .env (optional but recommended)
+# add GROQ_API_KEY and API_BASE_URL in .env (optional but recommended)
 python run.py
 ```
 
@@ -31,8 +31,9 @@ Output files are written to `output/`:
 ## Defaults
 
 The included sample spec targets:
-- `GET /users/{id}` with `id=1`
-- Base URL: `https://jsonplaceholder.typicode.com`
+- `GET /shop/2/category/4/items/?start=0&limit=10&language_code=en`
+- Base URL from `.env`: `API_BASE_URL=http://63.188.0.184/en/api`
+- Response fixture: `fixtures/shop_items_response.json` (synthetic, no live API call by default)
 
 Run with defaults:
 
@@ -42,18 +43,25 @@ source .venv/bin/activate
 python run.py
 ```
 
-A successful run should show **at least one FAIL** — e.g. `address.geo.lat` documented as `number` in the spec but returned as a string by the API. See `output/report.md`.
+Fetch from the live API instead:
+
+```bash
+python run.py --live
+```
+
+See `output/report.md` for the full PASS/FAIL breakdown (mismatches are deduplicated per field).
 
 Use your own endpoint/spec:
 
 ```bash
 python run.py \
   --spec spec/your-openapi.yaml \
-  --endpoint /products/{id} \
+  --endpoint /shop/2/category/4/items/ \
   --method get \
-  --base-url https://your-api.example.com \
-  --path-param id=123
+  --path-param ""
 ```
+
+Query parameters can be appended to `--endpoint` (e.g. `?start=0&limit=10&language_code=en`). Override the base URL with `API_BASE_URL` in `.env` or `--base-url`.
 
 ## Notes
 
