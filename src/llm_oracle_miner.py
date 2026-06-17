@@ -92,16 +92,17 @@ Return ONLY valid JSON array. Each item must contain:
 - allowed_values (only for enum)
 """
 
-    observation = client.chat.completions.create(
-        model=model,
-        max_tokens=1600,
-        temperature=0,
-        messages=[{"role": "user", "content": observation_prompt}],
-    )
-    raw = (observation.choices[0].message.content or "").strip()
-    proposed = _parse_json_array(raw)
+    try:
+        observation = client.chat.completions.create(
+            model=model,
+            max_tokens=1600,
+            temperature=0,
+            messages=[{"role": "user", "content": observation_prompt}],
+        )
+        raw = (observation.choices[0].message.content or "").strip()
+        proposed = _parse_json_array(raw)
 
-    confirmation_prompt = f"""
+        confirmation_prompt = f"""
 You are validating proposed API constraints. For each constraint, decide if it is
 strictly supported by the schema. Reject unsupported ones.
 
@@ -116,27 +117,29 @@ Return ONLY valid JSON array with:
 - confirmed (true/false)
 - reason (short)
 """
-    confirmation = client.chat.completions.create(
-        model=model,
-        max_tokens=1400,
-        temperature=0,
-        messages=[{"role": "user", "content": confirmation_prompt}],
-    )
-    checks = _parse_json_array((confirmation.choices[0].message.content or "").strip())
-    confirmed_map = {c["id"]: c for c in checks if c.get("confirmed") is True}
+        confirmation = client.chat.completions.create(
+            model=model,
+            max_tokens=1400,
+            temperature=0,
+            messages=[{"role": "user", "content": confirmation_prompt}],
+        )
+        checks = _parse_json_array((confirmation.choices[0].message.content or "").strip())
+        confirmed_map = {c["id"]: c for c in checks if c.get("confirmed") is True}
 
-    confirmed_constraints: list[dict[str, Any]] = []
-    for item in proposed:
-        check = confirmed_map.get(item.get("id"))
-        if check:
-            item["confirmed"] = True
-            item["reason"] = check.get("reason", "")
-            confirmed_constraints.append(item)
+        confirmed_constraints: list[dict[str, Any]] = []
+        for item in proposed:
+            check = confirmed_map.get(item.get("id"))
+            if check:
+                item["confirmed"] = True
+                item["reason"] = check.get("reason", "")
+                confirmed_constraints.append(item)
 
-    if not confirmed_constraints:
-        return _fallback_constraints(schema, required_fields), "fallback(confirmation_empty)"
+        if not confirmed_constraints:
+            return _fallback_constraints(schema, required_fields), "fallback(confirmation_empty)"
 
-    return confirmed_constraints, f"llm({model})"
+        return confirmed_constraints, f"llm({model})"
+    except (json.JSONDecodeError, ValueError):
+        return _fallback_constraints(schema, required_fields), "fallback(llm_parse_error)"
 
 
 def _parse_json_array(text: str) -> list[dict[str, Any]]:
