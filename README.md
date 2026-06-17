@@ -32,8 +32,7 @@ Output files are written to `output/`:
 
 The included sample spec targets:
 - `GET /shop/2/category/4/items/?start=0&limit=10&language_code=en`
-- Base URL from `.env`: `API_BASE_URL=http://63.188.0.184/en/api`
-- Response fixture: `fixtures/shop_items_response.json` (synthetic, no live API call by default)
+- Response fixture: `fixtures/shop_items_response.json` 
 
 Run with defaults:
 
