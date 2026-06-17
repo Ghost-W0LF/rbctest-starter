@@ -8,6 +8,7 @@ import httpx
 from dotenv import load_dotenv
 
 from src.llm_oracle_miner import mine_constraints_with_oc
+from src.schema_constraints import extract_schema_constraints, merge_constraints
 from src.spec_loader import load_endpoint_schema
 from src.validator import validate_constraints
 
@@ -25,11 +26,14 @@ def main() -> None:
     if not base_url:
         raise ValueError("Base URL missing. Provide --base-url or set servers[0].url in spec.")
 
-    constraints, source = mine_constraints_with_oc(
+    llm_constraints, source = mine_constraints_with_oc(
         schema=endpoint_schema.response_schema,
         required_fields=endpoint_schema.required_fields,
         model=args.model,
     )
+    schema_constraints = extract_schema_constraints(endpoint_schema.response_schema)
+    constraints = merge_constraints(llm_constraints, schema_constraints)
+
     constraints_path = out_dir / "mined_constraints.json"
     constraints_path.write_text(json.dumps(constraints, indent=2), encoding="utf-8")
 
@@ -47,8 +51,12 @@ def main() -> None:
     results_path = out_dir / "validation_results.json"
     results_path.write_text(json.dumps(results, indent=2), encoding="utf-8")
 
+    report_path = out_dir / "report.md"
+    report_path.write_text(build_report(args, source, constraints, results), encoding="utf-8")
+
     fail_count = sum(1 for r in results if r["status"] == "FAIL")
     pass_count = len(results) - fail_count
+    failures = [r for r in results if r["status"] == "FAIL"]
 
     print("=== RBCTest-style Oracle Mining Demo ===")
     print(f"Source: {source}")
@@ -57,10 +65,56 @@ def main() -> None:
     print(f"Response saved: {response_path}")
     print(f"Constraints saved: {constraints_path}")
     print(f"Results saved: {results_path}")
+    print(f"Report saved: {report_path}")
     print(f"Summary: PASS={pass_count}, FAIL={fail_count}")
     print("\nTop checks:")
-    for row in results[:10]:
-        print(f"- [{row['status']}] {row['id']} :: {row['detail']}")
+    for row in results[:12]:
+        print(f"- [{row['status']}] {row['field']} :: {row['detail']}")
+
+    if failures:
+        print("\nMismatches found:")
+        for row in failures:
+            print(f"- {row['field']}: {row['detail']}")
+    else:
+        print("\nNo mismatches found. Tighten the spec or try another endpoint.")
+
+
+def build_report(
+    args: argparse.Namespace,
+    source: str,
+    constraints: list[dict],
+    results: list[dict],
+) -> str:
+    failures = [r for r in results if r["status"] == "FAIL"]
+    passes = [r for r in results if r["status"] == "PASS"]
+
+    lines = [
+        "# Oracle Mining Report",
+        "",
+        f"- Endpoint: `{args.method.upper()} {args.endpoint}`",
+        f"- Mining source: `{source}`",
+        f"- Constraints checked: {len(constraints)}",
+        f"- PASS: {len(passes)}",
+        f"- FAIL: {len(failures)}",
+        "",
+    ]
+
+    if failures:
+        lines.extend(["## Mismatches (spec vs reality)", ""])
+        for i, row in enumerate(failures, start=1):
+            lines.extend(
+                [
+                    f"### Mismatch #{i}",
+                    f"- Field: `{row['field']}`",
+                    f"- Rule: {row['rule']}",
+                    f"- Detail: {row['detail']}",
+                    "",
+                ]
+            )
+    else:
+        lines.append("No mismatches detected.")
+
+    return "\n".join(lines)
 
 
 def parse_args() -> argparse.Namespace:
@@ -79,14 +133,20 @@ def parse_args() -> argparse.Namespace:
 def fetch_response(
     base_url: str, endpoint: str, method: str, path_param: str, timeout: float
 ) -> dict:
-    key, val = path_param.split("=", maxsplit=1)
-    rendered = endpoint.replace(f"{{{key}}}", val)
+    rendered = endpoint
+    if path_param:
+        key, val = path_param.split("=", maxsplit=1)
+        rendered = endpoint.replace(f"{{{key}}}", val)
     url = f"{base_url.rstrip('/')}{rendered}"
 
     with httpx.Client(timeout=timeout) as client:
         resp = client.request(method.upper(), url)
         resp.raise_for_status()
         data = resp.json()
+        if isinstance(data, list):
+            if not data:
+                raise ValueError("Empty list response.")
+            data = data[0]
         if not isinstance(data, dict):
             raise ValueError("This starter expects an object JSON response.")
         return data
