@@ -1,59 +1,105 @@
 openapi: 3.0.3
 info:
-  title: Demo Users API
+  title: Shop Category Items API
   version: 1.0.0
 servers:
-  - url: https://jsonplaceholder.typicode.com
+  - url: http://63.188.0.184/en/api
 paths:
-  /users/{id}:
+  /shop/2/category/4/items/:
     get:
-      summary: Get user by id
+      summary: List shop category items
       parameters:
-        - name: id
-          in: path
-          required: true
+        - name: start
+          in: query
           schema:
             type: integer
+        - name: limit
+          in: query
+          schema:
+            type: integer
+        - name: language_code
+          in: query
+          schema:
+            type: string
       responses:
         "200":
-          description: User object
+          description: Paginated shop items
           content:
             application/json:
               schema:
                 type: object
-                required: [id, name, username, email, address]
+                required: [serializer_data]
                 properties:
-                  id:
-                    type: integer
-                    description: Numeric user id.
-                  name:
-                    type: string
-                  username:
-                    type: string
-                  email:
-                    type: string
-                    format: email
-                  phone:
-                    type: string
-                  website:
-                    type: string
-                  address:
+                  serializer_data:
                     type: object
-                    required: [geo]
+                    required: [total_size, limit, start, page, serializer_data]
                     properties:
-                      street:
+                      total_size:
                         type: string
-                      city:
+                        description: Documented as string; API returns an integer.
+                      limit:
                         type: string
-                      zipcode:
-                        type: string
-                      geo:
-                        type: object
-                        required: [lat, lng]
-                        properties:
-                          lat:
-                            type: number
-                            description: Latitude coordinate.
-                          lng:
-                            type: number
-                            description: Longitude coordinate.
+                        description: Documented as string; API returns an integer.
+                      start:
+                        type: integer
+                      page:
+                        type: integer
+                        description: Documented as required; API does not return this field.
+                      serializer_data:
+                        type: array
+                        items:
+                          type: object
+                          required: [id, name, code, sell_price, shop]
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                            name_en:
+                              type: string
+                              nullable: true
+                            code:
+                              type: string
+                            quantity:
+                              type: number
+                            image:
+                              type: string
+                              nullable: true
+                            sell_price:
+                              type: number
+                            actual_price:
+                              type: number
+                            discount_price:
+                              type: number
+                              nullable: true
+                            discounted_quantity:
+                              type: integer
+                              nullable: true
+                            shop:
+                              type: integer
+                            unit:
+                              type: object
+                              required: [id, name]
+                              properties:
+                                id:
+                                  type: integer
+                                name:
+                                  type: string
+                                size:
+                                  type: integer
+                            vat_category:
+                              type: object
+                              required: [id, name]
+                              properties:
+                                id:
+                                  type: integer
+                                name:
+                                  type: string
+                            category:
+                              type: object
+                              required: [id, name]
+                              properties:
+                                id:
+                                  type: integer
+                                name:
+                                  type: string
