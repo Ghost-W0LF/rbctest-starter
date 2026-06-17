@@ -21,21 +21,18 @@ paths:
             application/json:
               schema:
                 type: object
-                required: [id, name, username, email]
+                required: [id, name, username, email, address]
                 properties:
                   id:
                     type: integer
                     description: Numeric user id.
                   name:
                     type: string
-                    description: Full name.
                   username:
                     type: string
-                    description: Unique handle.
                   email:
                     type: string
                     format: email
-                    description: User email address.
                   phone:
                     type: string
                   website:
@@ -44,17 +41,19 @@ paths:
                     type: object
                     required: [geo]
                     properties:
+                      street:
+                        type: string
+                      city:
+                        type: string
+                      zipcode:
+                        type: string
                       geo:
                         type: object
                         required: [lat, lng]
                         properties:
                           lat:
                             type: number
+                            description: Latitude coordinate.
                           lng:
                             type: number
-                  company:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                        
+                            description: Longitude coordinate.
