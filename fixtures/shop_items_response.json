@@ -1,0 +1,93 @@
+{
+  "serializer_data": {
+    "total_size": 7,
+    "limit": 10,
+    "start": 0,
+    "serializer_data": [
+      {
+        "id": "5",
+        "name": "Synthetic Mozzarella Cheese 200g",
+        "name_en": null,
+        "code": "SYNTH-6281024110027",
+        "quantity": "23",
+        "image": null,
+        "sell_price": 150.0,
+        "unit": {
+          "id": 4,
+          "name": "Kilogramme",
+          "size": "5"
+        },
+        "vat_category": {
+          "id": 3,
+          "name": "Standard"
+        },
+        "category": {
+          "id": 4,
+          "name": "Provisions"
+        },
+        "shop": 2,
+        "actual_price": 150.0,
+        "discount_price": null,
+        "discounted_quantity": null,
+        "discount_start": null,
+        "discount_end": null
+      },
+      {
+        "id": 4482,
+        "name": "Synthetic Milk Chocolate 500g",
+        "name_en": null,
+        "code": 16000438408,
+        "quantity": -2.0,
+        "image": null,
+        "sell_price": "15.0",
+        "unit": {
+          "id": 3,
+          "name": "Piece",
+          "size": 1
+        },
+        "vat_category": {
+          "id": 2,
+          "name": "basic"
+        },
+        "category": {
+          "id": "4",
+          "name": "Provisions"
+        },
+        "shop": "2",
+        "actual_price": 15.0,
+        "discount_price": null,
+        "discounted_quantity": null,
+        "discount_start": null,
+        "discount_end": null
+      },
+      {
+        "id": 5316,
+        "name": "Synthetic Vanilla Mix 500g",
+        "name_en": null,
+        "code": "SYNTH-16000790704",
+        "quantity": 0.0,
+        "image": null,
+        "sell_price": 15.0,
+        "unit": {
+          "id": "3",
+          "name": "Piece",
+          "size": 1
+        },
+        "vat_category": {
+          "id": 2,
+          "name": "basic"
+        },
+        "category": {
+          "id": 4,
+          "name": "Provisions"
+        },
+        "shop": 2,
+        "actual_price": 15.0,
+        "discount_price": null,
+        "discounted_quantity": null,
+        "discount_start": null,
+        "discount_end": null
+      }
+    ]
+  }
+}
