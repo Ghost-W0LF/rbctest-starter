@@ -31,14 +31,18 @@ Output files are written to `output/`:
 ## Defaults
 
 The included sample spec targets:
-- `GET /users/{id}`
+- `GET /users/{id}` with `id=1`
 - Base URL: `https://jsonplaceholder.typicode.com`
 
 Run with defaults:
 
 ```bash
+cd rbctest-starter
+source .venv/bin/activate
 python run.py
 ```
+
+A successful run should show **at least one FAIL** — e.g. `address.geo.lat` documented as `number` in the spec but returned as a string by the API. See `output/report.md`.
 
 Use your own endpoint/spec:
 
