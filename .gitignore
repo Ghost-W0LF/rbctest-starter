@@ -17,6 +17,10 @@ dist/
 *.egg
 .env.example
 
+# Output
+output/response.json
+
+
 # Testing / tooling
 .pytest_cache/
 .mypy_cache/
