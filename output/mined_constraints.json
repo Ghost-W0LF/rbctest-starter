@@ -9,24 +9,13 @@
     "source": "schema"
   },
   {
-    "id": "type_serializer_data_start",
-    "field": "serializer_data.start",
+    "id": "type_serializer_data",
+    "field": "serializer_data",
     "kind": "response-property",
-    "rule": "Field 'serializer_data.start' must be of type 'integer'.",
+    "rule": "Field 'serializer_data' must be of type 'object'.",
     "type": "type",
-    "confirmed": true,
-    "source": "schema",
-    "expected_type": "integer"
-  },
-  {
-    "id": "type_serializer_data_serializer_data",
-    "field": "serializer_data.serializer_data",
-    "kind": "response-property",
-    "rule": "Field 'serializer_data.serializer_data' must be of type 'array'.",
-    "type": "type",
-    "confirmed": true,
-    "source": "schema",
-    "expected_type": "array"
+    "expected_type": "object",
+    "confirmed": true
   },
   {
     "id": "required_serializer_data_total_size",
@@ -41,11 +30,11 @@
     "id": "type_serializer_data_total_size",
     "field": "serializer_data.total_size",
     "kind": "response-property",
-    "rule": "Field 'serializer_data.total_size' must be of type 'string'.",
+    "rule": "Field 'serializer_data.total_size' must be of type 'integer'.",
     "type": "type",
     "confirmed": true,
     "source": "schema",
-    "expected_type": "string"
+    "expected_type": "integer"
   },
   {
     "id": "required_serializer_data_limit",
@@ -60,11 +49,11 @@
     "id": "type_serializer_data_limit",
     "field": "serializer_data.limit",
     "kind": "response-property",
-    "rule": "Field 'serializer_data.limit' must be of type 'string'.",
+    "rule": "Field 'serializer_data.limit' must be of type 'integer'.",
     "type": "type",
     "confirmed": true,
     "source": "schema",
-    "expected_type": "string"
+    "expected_type": "integer"
   },
   {
     "id": "required_serializer_data_start",
@@ -76,19 +65,10 @@
     "source": "schema"
   },
   {
-    "id": "required_serializer_data_page",
-    "field": "serializer_data.page",
+    "id": "type_serializer_data_start",
+    "field": "serializer_data.start",
     "kind": "response-property",
-    "rule": "Field 'serializer_data.page' must exist in response.",
-    "type": "required",
-    "confirmed": true,
-    "source": "schema"
-  },
-  {
-    "id": "type_serializer_data_page",
-    "field": "serializer_data.page",
-    "kind": "response-property",
-    "rule": "Field 'serializer_data.page' must be of type 'integer'.",
+    "rule": "Field 'serializer_data.start' must be of type 'integer'.",
     "type": "type",
     "confirmed": true,
     "source": "schema",
@@ -102,6 +82,16 @@
     "type": "required",
     "confirmed": true,
     "source": "schema"
+  },
+  {
+    "id": "type_serializer_data_serializer_data",
+    "field": "serializer_data.serializer_data",
+    "kind": "response-property",
+    "rule": "Field 'serializer_data.serializer_data' must be of type 'array'.",
+    "type": "type",
+    "confirmed": true,
+    "source": "schema",
+    "expected_type": "array"
   },
   {
     "id": "required_serializer_data_serializer_data_items_id_0",
@@ -951,5 +941,113 @@
     "confirmed": true,
     "source": "schema",
     "expected_type": "string"
+  },
+  {
+    "id": "downstream_serializer_data_serializer_data_items_name_en_0",
+    "field": "serializer_data.serializer_data[0].name_en",
+    "kind": "response-property",
+    "rule": "Downstream assumes 'serializer_data.serializer_data[*].name_en' is present and non-null (spec marks it nullable).",
+    "type": "downstream_present",
+    "confirmed": true,
+    "source": "downstream"
+  },
+  {
+    "id": "downstream_serializer_data_serializer_data_items_name_en_1",
+    "field": "serializer_data.serializer_data[1].name_en",
+    "kind": "response-property",
+    "rule": "Downstream assumes 'serializer_data.serializer_data[*].name_en' is present and non-null (spec marks it nullable).",
+    "type": "downstream_present",
+    "confirmed": true,
+    "source": "downstream"
+  },
+  {
+    "id": "downstream_serializer_data_serializer_data_items_name_en_2",
+    "field": "serializer_data.serializer_data[2].name_en",
+    "kind": "response-property",
+    "rule": "Downstream assumes 'serializer_data.serializer_data[*].name_en' is present and non-null (spec marks it nullable).",
+    "type": "downstream_present",
+    "confirmed": true,
+    "source": "downstream"
+  },
+  {
+    "id": "downstream_serializer_data_serializer_data_items_image_0",
+    "field": "serializer_data.serializer_data[0].image",
+    "kind": "response-property",
+    "rule": "Downstream assumes 'serializer_data.serializer_data[*].image' is present and non-null (spec marks it nullable).",
+    "type": "downstream_present",
+    "confirmed": true,
+    "source": "downstream"
+  },
+  {
+    "id": "downstream_serializer_data_serializer_data_items_image_1",
+    "field": "serializer_data.serializer_data[1].image",
+    "kind": "response-property",
+    "rule": "Downstream assumes 'serializer_data.serializer_data[*].image' is present and non-null (spec marks it nullable).",
+    "type": "downstream_present",
+    "confirmed": true,
+    "source": "downstream"
+  },
+  {
+    "id": "downstream_serializer_data_serializer_data_items_image_2",
+    "field": "serializer_data.serializer_data[2].image",
+    "kind": "response-property",
+    "rule": "Downstream assumes 'serializer_data.serializer_data[*].image' is present and non-null (spec marks it nullable).",
+    "type": "downstream_present",
+    "confirmed": true,
+    "source": "downstream"
+  },
+  {
+    "id": "downstream_serializer_data_serializer_data_items_discount_price_0",
+    "field": "serializer_data.serializer_data[0].discount_price",
+    "kind": "response-property",
+    "rule": "Downstream assumes 'serializer_data.serializer_data[*].discount_price' is present and non-null (spec marks it nullable).",
+    "type": "downstream_present",
+    "confirmed": true,
+    "source": "downstream"
+  },
+  {
+    "id": "downstream_serializer_data_serializer_data_items_discount_price_1",
+    "field": "serializer_data.serializer_data[1].discount_price",
+    "kind": "response-property",
+    "rule": "Downstream assumes 'serializer_data.serializer_data[*].discount_price' is present and non-null (spec marks it nullable).",
+    "type": "downstream_present",
+    "confirmed": true,
+    "source": "downstream"
+  },
+  {
+    "id": "downstream_serializer_data_serializer_data_items_discount_price_2",
+    "field": "serializer_data.serializer_data[2].discount_price",
+    "kind": "response-property",
+    "rule": "Downstream assumes 'serializer_data.serializer_data[*].discount_price' is present and non-null (spec marks it nullable).",
+    "type": "downstream_present",
+    "confirmed": true,
+    "source": "downstream"
+  },
+  {
+    "id": "downstream_serializer_data_serializer_data_items_discounted_quantity_0",
+    "field": "serializer_data.serializer_data[0].discounted_quantity",
+    "kind": "response-property",
+    "rule": "Downstream assumes 'serializer_data.serializer_data[*].discounted_quantity' is present and non-null (spec marks it nullable).",
+    "type": "downstream_present",
+    "confirmed": true,
+    "source": "downstream"
+  },
+  {
+    "id": "downstream_serializer_data_serializer_data_items_discounted_quantity_1",
+    "field": "serializer_data.serializer_data[1].discounted_quantity",
+    "kind": "response-property",
+    "rule": "Downstream assumes 'serializer_data.serializer_data[*].discounted_quantity' is present and non-null (spec marks it nullable).",
+    "type": "downstream_present",
+    "confirmed": true,
+    "source": "downstream"
+  },
+  {
+    "id": "downstream_serializer_data_serializer_data_items_discounted_quantity_2",
+    "field": "serializer_data.serializer_data[2].discounted_quantity",
+    "kind": "response-property",
+    "rule": "Downstream assumes 'serializer_data.serializer_data[*].discounted_quantity' is present and non-null (spec marks it nullable).",
+    "type": "downstream_present",
+    "confirmed": true,
+    "source": "downstream"
   }
 ]
