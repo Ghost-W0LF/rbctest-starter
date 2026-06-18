@@ -1,9 +1,9 @@
 # Oracle Mining Report
 
 - Endpoint: `GET /shop/2/category/4/items/?start=0&limit=10&language_code=en`
-- Mining source: `fallback(llm_parse_error)`
-- Constraints checked: 109
-- PASS: 97
+- Mining source: `llm(llama-3.3-70b-versatile)`
+- Constraints checked: 108
+- PASS: 96
 - FAIL: 12
 - Unique mismatch fields: 12
 
@@ -86,14 +86,13 @@
 - [FAIL] `serializer_data.serializer_data[0].discounted_quantity` :: nullable in spec but downstream assumes present (value=None)
 - [FAIL] `serializer_data.serializer_data[1].discounted_quantity` :: nullable in spec but downstream assumes present (value=None)
 - [PASS] `serializer_data` :: pass
-- [PASS] `serializer_data` :: pass
-- [PASS] `serializer_data.total_size` :: pass
 - [PASS] `serializer_data.total_size` :: pass
 - [PASS] `serializer_data.limit` :: pass
-- [PASS] `serializer_data.limit` :: pass
-- [PASS] `serializer_data.start` :: pass
 - [PASS] `serializer_data.start` :: pass
 - [PASS] `serializer_data.serializer_data` :: pass
+- [PASS] `serializer_data.total_size` :: pass
+- [PASS] `serializer_data.limit` :: pass
+- [PASS] `serializer_data.start` :: pass
 - [PASS] `serializer_data.serializer_data` :: pass
 - [PASS] `serializer_data.serializer_data[0].id` :: pass
 - [PASS] `serializer_data.serializer_data[1].id` :: pass
