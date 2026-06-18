@@ -85,6 +85,44 @@ def extract_schema_constraints(schema: dict[str, Any], prefix: str = "") -> list
     return drop_invalid_array_path_constraints(constraints)
 
 
+def extract_downstream_constraints(schema: dict[str, Any], prefix: str = "") -> list[dict[str, Any]]:
+    """Mine downstream-present oracles for nullable fields assumed non-null by consumers."""
+    constraints: list[dict[str, Any]] = []
+    props = schema.get("properties", {})
+
+    for name, meta in props.items():
+        path = f"{prefix}.{name}" if prefix else name
+        field_type = meta.get("type")
+
+        if field_type == "object":
+            constraints.extend(extract_downstream_constraints(meta, path))
+            continue
+
+        if field_type == "array":
+            items = meta.get("items", {})
+            if items.get("type") == "object":
+                constraints.extend(extract_downstream_constraints(items, f"{path}[*]"))
+            continue
+
+        if meta.get("nullable"):
+            constraints.append(
+                {
+                    "id": f"downstream_{_path_id(path)}",
+                    "field": path,
+                    "kind": "response-property",
+                    "rule": (
+                        f"Downstream assumes '{path}' is present and non-null "
+                        f"(spec marks it nullable)."
+                    ),
+                    "type": "downstream_present",
+                    "confirmed": True,
+                    "source": "downstream",
+                }
+            )
+
+    return drop_invalid_array_path_constraints(constraints)
+
+
 def expand_array_constraints(
     constraints: list[dict[str, Any]], response_json: dict[str, Any]
 ) -> list[dict[str, Any]]:
