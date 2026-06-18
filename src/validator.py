@@ -82,6 +82,16 @@ def validate_constraints(response_json: dict[str, Any], constraints: list[dict[s
                 ok = isinstance(value, str) and bool(re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", value))
                 if not ok:
                     detail = f"invalid email format: {value}"
+        elif ctype == "downstream_present":
+            exists, value = get_value_by_path(response_json, field)
+            if not exists:
+                ok = False
+                detail = f"missing field '{field}'"
+            elif value is None:
+                ok = False
+                detail = "nullable in spec but downstream assumes present (value=None)"
+            else:
+                ok = True
         else:
             detail = f"unsupported constraint type '{ctype}'"
 
@@ -92,6 +102,8 @@ def validate_constraints(response_json: dict[str, Any], constraints: list[dict[s
                 "rule": c.get("rule"),
                 "status": "PASS" if ok else "FAIL",
                 "detail": detail,
+                "constraint_type": ctype,
+                "source": c.get("source", ""),
             }
         )
 
