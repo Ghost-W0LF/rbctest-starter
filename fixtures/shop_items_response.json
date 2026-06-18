@@ -6,11 +6,11 @@
     "serializer_data": [
       {
         "id": 5,
-        "name": "Synthetic Mozzarella Cheese 200g",
-        "name_en": null,
+        "name": null,
+        "name_en": "Synthetic mozzarella name",
         "code": "SYNTH-6281024110027",
-        "quantity": "23",
-        "image": null,
+        "quantity": 23.0,
+        "image": "https://example.com/mozzarella.png",
         "sell_price": 150.0,
         "unit": {
           "id": 4,
@@ -36,10 +36,10 @@
         "id": 4482,
         "name": "Synthetic Milk Chocolate 500g",
         "name_en": null,
-        "code": 16000438408,
+        "code": null,
         "quantity": -2.0,
         "image": null,
-        "sell_price": "15.0",
+        "sell_price": null,
         "unit": {
           "id": 3,
           "name": "Piece",
@@ -63,7 +63,7 @@
       {
         "id": 5316,
         "name": "Synthetic Vanilla Mix 500g",
-        "name_en": null,
+        "name_en": "Synthetic vanilla mix",
         "code": "SYNTH-16000790704",
         "quantity": 0.0,
         "image": "https://example.com/vanilla.png",
@@ -82,7 +82,7 @@
           "name": "Provisions"
         },
         "shop": 2,
-        "actual_price": 15.0,
+        "actual_price": null,
         "discount_price": 10.0,
         "discounted_quantity": 1,
         "discount_start": null,
