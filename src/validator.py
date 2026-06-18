@@ -54,6 +54,9 @@ def validate_constraints(response_json: dict[str, Any], constraints: list[dict[s
                 detail = f"missing field '{field}'"
             elif value is None and c.get("nullable"):
                 ok = True
+            elif value is None:
+                ok = False
+                detail = "null returned but field is not nullable in spec"
             else:
                 expected = c.get("expected_type")
                 ok = _matches_type(value, expected)
@@ -66,6 +69,9 @@ def validate_constraints(response_json: dict[str, Any], constraints: list[dict[s
                 detail = f"missing field '{field}'"
             elif value is None and c.get("nullable"):
                 ok = True
+            elif value is None:
+                ok = False
+                detail = "null returned but field is not nullable in spec"
             else:
                 allowed = c.get("allowed_values", [])
                 ok = value in allowed
@@ -78,6 +84,9 @@ def validate_constraints(response_json: dict[str, Any], constraints: list[dict[s
                 detail = f"missing field '{field}'"
             elif value is None and c.get("nullable"):
                 ok = True
+            elif value is None:
+                ok = False
+                detail = "null returned but field is not nullable in spec"
             else:
                 ok = isinstance(value, str) and bool(re.match(r"^[^@\s]+@[^@\s]+\.[^@\s]+$", value))
                 if not ok:
