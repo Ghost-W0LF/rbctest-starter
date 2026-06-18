@@ -9,6 +9,24 @@
     "source": "schema"
   },
   {
+    "id": "type_serializer_data",
+    "field": "serializer_data",
+    "kind": "response-property",
+    "rule": "Field 'serializer_data' must be of type 'object'.",
+    "type": "type",
+    "expected_type": "object",
+    "confirmed": true
+  },
+  {
+    "id": "required_serializer_data_total_size",
+    "field": "serializer_data.total_size",
+    "kind": "response-property",
+    "rule": "Field 'serializer_data.total_size' must exist in response.",
+    "type": "required",
+    "confirmed": true,
+    "source": "schema"
+  },
+  {
     "id": "type_serializer_data_total_size",
     "field": "serializer_data.total_size",
     "kind": "response-property",
@@ -17,6 +35,15 @@
     "confirmed": true,
     "source": "schema",
     "expected_type": "integer"
+  },
+  {
+    "id": "required_serializer_data_limit",
+    "field": "serializer_data.limit",
+    "kind": "response-property",
+    "rule": "Field 'serializer_data.limit' must exist in response.",
+    "type": "required",
+    "confirmed": true,
+    "source": "schema"
   },
   {
     "id": "type_serializer_data_limit",
@@ -29,6 +56,15 @@
     "expected_type": "integer"
   },
   {
+    "id": "required_serializer_data_start",
+    "field": "serializer_data.start",
+    "kind": "response-property",
+    "rule": "Field 'serializer_data.start' must exist in response.",
+    "type": "required",
+    "confirmed": true,
+    "source": "schema"
+  },
+  {
     "id": "type_serializer_data_start",
     "field": "serializer_data.start",
     "kind": "response-property",
@@ -39,6 +75,15 @@
     "expected_type": "integer"
   },
   {
+    "id": "required_serializer_data_serializer_data",
+    "field": "serializer_data.serializer_data",
+    "kind": "response-property",
+    "rule": "Field 'serializer_data.serializer_data' must exist in response.",
+    "type": "required",
+    "confirmed": true,
+    "source": "schema"
+  },
+  {
     "id": "type_serializer_data_serializer_data",
     "field": "serializer_data.serializer_data",
     "kind": "response-property",
@@ -47,42 +92,6 @@
     "confirmed": true,
     "source": "schema",
     "expected_type": "array"
-  },
-  {
-    "id": "required_serializer_data_total_size",
-    "field": "serializer_data.total_size",
-    "kind": "response-property",
-    "rule": "Field 'serializer_data.total_size' must exist in response.",
-    "type": "required",
-    "confirmed": true,
-    "source": "schema"
-  },
-  {
-    "id": "required_serializer_data_limit",
-    "field": "serializer_data.limit",
-    "kind": "response-property",
-    "rule": "Field 'serializer_data.limit' must exist in response.",
-    "type": "required",
-    "confirmed": true,
-    "source": "schema"
-  },
-  {
-    "id": "required_serializer_data_start",
-    "field": "serializer_data.start",
-    "kind": "response-property",
-    "rule": "Field 'serializer_data.start' must exist in response.",
-    "type": "required",
-    "confirmed": true,
-    "source": "schema"
-  },
-  {
-    "id": "required_serializer_data_serializer_data",
-    "field": "serializer_data.serializer_data",
-    "kind": "response-property",
-    "rule": "Field 'serializer_data.serializer_data' must exist in response.",
-    "type": "required",
-    "confirmed": true,
-    "source": "schema"
   },
   {
     "id": "required_serializer_data_serializer_data_items_id_0",

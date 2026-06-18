@@ -9,40 +9,13 @@
     "source": "schema"
   },
   {
-    "id": "type_serializer_data_total_size",
-    "field": "serializer_data.total_size",
-    "rule": "Field 'serializer_data.total_size' must be of type 'integer'.",
+    "id": "type_serializer_data",
+    "field": "serializer_data",
+    "rule": "Field 'serializer_data' must be of type 'object'.",
     "status": "PASS",
     "detail": "pass",
     "constraint_type": "type",
-    "source": "schema"
-  },
-  {
-    "id": "type_serializer_data_limit",
-    "field": "serializer_data.limit",
-    "rule": "Field 'serializer_data.limit' must be of type 'integer'.",
-    "status": "PASS",
-    "detail": "pass",
-    "constraint_type": "type",
-    "source": "schema"
-  },
-  {
-    "id": "type_serializer_data_start",
-    "field": "serializer_data.start",
-    "rule": "Field 'serializer_data.start' must be of type 'integer'.",
-    "status": "PASS",
-    "detail": "pass",
-    "constraint_type": "type",
-    "source": "schema"
-  },
-  {
-    "id": "type_serializer_data_serializer_data",
-    "field": "serializer_data.serializer_data",
-    "rule": "Field 'serializer_data.serializer_data' must be of type 'array'.",
-    "status": "PASS",
-    "detail": "pass",
-    "constraint_type": "type",
-    "source": "schema"
+    "source": ""
   },
   {
     "id": "required_serializer_data_total_size",
@@ -51,6 +24,15 @@
     "status": "PASS",
     "detail": "pass",
     "constraint_type": "required",
+    "source": "schema"
+  },
+  {
+    "id": "type_serializer_data_total_size",
+    "field": "serializer_data.total_size",
+    "rule": "Field 'serializer_data.total_size' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass",
+    "constraint_type": "type",
     "source": "schema"
   },
   {
@@ -63,6 +45,15 @@
     "source": "schema"
   },
   {
+    "id": "type_serializer_data_limit",
+    "field": "serializer_data.limit",
+    "rule": "Field 'serializer_data.limit' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass",
+    "constraint_type": "type",
+    "source": "schema"
+  },
+  {
     "id": "required_serializer_data_start",
     "field": "serializer_data.start",
     "rule": "Field 'serializer_data.start' must exist in response.",
@@ -72,12 +63,30 @@
     "source": "schema"
   },
   {
+    "id": "type_serializer_data_start",
+    "field": "serializer_data.start",
+    "rule": "Field 'serializer_data.start' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass",
+    "constraint_type": "type",
+    "source": "schema"
+  },
+  {
     "id": "required_serializer_data_serializer_data",
     "field": "serializer_data.serializer_data",
     "rule": "Field 'serializer_data.serializer_data' must exist in response.",
     "status": "PASS",
     "detail": "pass",
     "constraint_type": "required",
+    "source": "schema"
+  },
+  {
+    "id": "type_serializer_data_serializer_data",
+    "field": "serializer_data.serializer_data",
+    "rule": "Field 'serializer_data.serializer_data' must be of type 'array'.",
+    "status": "PASS",
+    "detail": "pass",
+    "constraint_type": "type",
     "source": "schema"
   },
   {
@@ -165,8 +174,8 @@
     "id": "type_serializer_data_serializer_data_items_name_0",
     "field": "serializer_data.serializer_data[0].name",
     "rule": "Field 'serializer_data.serializer_data[*].name' must be of type 'string'.",
-    "status": "PASS",
-    "detail": "pass",
+    "status": "FAIL",
+    "detail": "null returned but field is not nullable in spec",
     "constraint_type": "type",
     "source": "schema"
   },
@@ -256,7 +265,7 @@
     "field": "serializer_data.serializer_data[1].code",
     "rule": "Field 'serializer_data.serializer_data[*].code' must be of type 'string'.",
     "status": "FAIL",
-    "detail": "expected string, got int (value=16000438408)",
+    "detail": "null returned but field is not nullable in spec",
     "constraint_type": "type",
     "source": "schema"
   },
@@ -273,8 +282,8 @@
     "id": "type_serializer_data_serializer_data_items_quantity_0",
     "field": "serializer_data.serializer_data[0].quantity",
     "rule": "Field 'serializer_data.serializer_data[*].quantity' must be of type 'number'.",
-    "status": "FAIL",
-    "detail": "expected number, got str (value='23')",
+    "status": "PASS",
+    "detail": "pass",
     "constraint_type": "type",
     "source": "schema"
   },
@@ -364,7 +373,7 @@
     "field": "serializer_data.serializer_data[1].sell_price",
     "rule": "Field 'serializer_data.serializer_data[*].sell_price' must be of type 'number'.",
     "status": "FAIL",
-    "detail": "expected number, got str (value='15.0')",
+    "detail": "null returned but field is not nullable in spec",
     "constraint_type": "type",
     "source": "schema"
   },
@@ -399,8 +408,8 @@
     "id": "type_serializer_data_serializer_data_items_actual_price_2",
     "field": "serializer_data.serializer_data[2].actual_price",
     "rule": "Field 'serializer_data.serializer_data[*].actual_price' must be of type 'number'.",
-    "status": "PASS",
-    "detail": "pass",
+    "status": "FAIL",
+    "detail": "null returned but field is not nullable in spec",
     "constraint_type": "type",
     "source": "schema"
   },
@@ -867,8 +876,8 @@
     "id": "downstream_serializer_data_serializer_data_items_name_en_0",
     "field": "serializer_data.serializer_data[0].name_en",
     "rule": "Downstream assumes 'serializer_data.serializer_data[*].name_en' is present and non-null (spec marks it nullable).",
-    "status": "FAIL",
-    "detail": "nullable in spec but downstream assumes present (value=None)",
+    "status": "PASS",
+    "detail": "pass",
     "constraint_type": "downstream_present",
     "source": "downstream"
   },
@@ -885,8 +894,8 @@
     "id": "downstream_serializer_data_serializer_data_items_name_en_2",
     "field": "serializer_data.serializer_data[2].name_en",
     "rule": "Downstream assumes 'serializer_data.serializer_data[*].name_en' is present and non-null (spec marks it nullable).",
-    "status": "FAIL",
-    "detail": "nullable in spec but downstream assumes present (value=None)",
+    "status": "PASS",
+    "detail": "pass",
     "constraint_type": "downstream_present",
     "source": "downstream"
   },
@@ -894,8 +903,8 @@
     "id": "downstream_serializer_data_serializer_data_items_image_0",
     "field": "serializer_data.serializer_data[0].image",
     "rule": "Downstream assumes 'serializer_data.serializer_data[*].image' is present and non-null (spec marks it nullable).",
-    "status": "FAIL",
-    "detail": "nullable in spec but downstream assumes present (value=None)",
+    "status": "PASS",
+    "detail": "pass",
     "constraint_type": "downstream_present",
     "source": "downstream"
   },
