@@ -5,7 +5,7 @@
     "start": 0,
     "serializer_data": [
       {
-        "id": "5",
+        "id": 5,
         "name": "Synthetic Mozzarella Cheese 200g",
         "name_en": null,
         "code": "SYNTH-6281024110027",
@@ -15,7 +15,7 @@
         "unit": {
           "id": 4,
           "name": "Kilogramme",
-          "size": "5"
+          "size": 5
         },
         "vat_category": {
           "id": 3,
@@ -50,10 +50,10 @@
           "name": "basic"
         },
         "category": {
-          "id": "4",
+          "id": 4,
           "name": "Provisions"
         },
-        "shop": "2",
+        "shop": 2,
         "actual_price": 15.0,
         "discount_price": null,
         "discounted_quantity": null,
@@ -66,10 +66,10 @@
         "name_en": null,
         "code": "SYNTH-16000790704",
         "quantity": 0.0,
-        "image": null,
+        "image": "https://example.com/vanilla.png",
         "sell_price": 15.0,
         "unit": {
-          "id": "3",
+          "id": 3,
           "name": "Piece",
           "size": 1
         },
@@ -83,8 +83,8 @@
         },
         "shop": 2,
         "actual_price": 15.0,
-        "discount_price": null,
-        "discounted_quantity": null,
+        "discount_price": 10.0,
+        "discounted_quantity": 1,
         "discount_start": null,
         "discount_end": null
       }
