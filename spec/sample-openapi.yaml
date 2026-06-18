@@ -32,19 +32,14 @@ paths:
                 properties:
                   serializer_data:
                     type: object
-                    required: [total_size, limit, start, page, serializer_data]
+                    required: [total_size, limit, start, serializer_data]
                     properties:
                       total_size:
-                        type: string
-                        description: Documented as string; API returns an integer.
+                        type: integer
                       limit:
-                        type: string
-                        description: Documented as string; API returns an integer.
+                        type: integer
                       start:
                         type: integer
-                      page:
-                        type: integer
-                        description: Documented as required; API does not return this field.
                       serializer_data:
                         type: array
                         items:
