@@ -9,39 +9,12 @@
     "source": "schema"
   },
   {
-    "id": "type_serializer_data",
-    "field": "serializer_data",
-    "rule": "Field 'serializer_data' must be of type 'object'.",
-    "status": "PASS",
-    "detail": "pass",
-    "constraint_type": "type",
-    "source": ""
-  },
-  {
-    "id": "required_serializer_data_total_size",
-    "field": "serializer_data.total_size",
-    "rule": "Field 'serializer_data.total_size' must exist in response.",
-    "status": "PASS",
-    "detail": "pass",
-    "constraint_type": "required",
-    "source": "schema"
-  },
-  {
     "id": "type_serializer_data_total_size",
     "field": "serializer_data.total_size",
     "rule": "Field 'serializer_data.total_size' must be of type 'integer'.",
     "status": "PASS",
     "detail": "pass",
     "constraint_type": "type",
-    "source": "schema"
-  },
-  {
-    "id": "required_serializer_data_limit",
-    "field": "serializer_data.limit",
-    "rule": "Field 'serializer_data.limit' must exist in response.",
-    "status": "PASS",
-    "detail": "pass",
-    "constraint_type": "required",
     "source": "schema"
   },
   {
@@ -54,15 +27,6 @@
     "source": "schema"
   },
   {
-    "id": "required_serializer_data_start",
-    "field": "serializer_data.start",
-    "rule": "Field 'serializer_data.start' must exist in response.",
-    "status": "PASS",
-    "detail": "pass",
-    "constraint_type": "required",
-    "source": "schema"
-  },
-  {
     "id": "type_serializer_data_start",
     "field": "serializer_data.start",
     "rule": "Field 'serializer_data.start' must be of type 'integer'.",
@@ -72,21 +36,48 @@
     "source": "schema"
   },
   {
-    "id": "required_serializer_data_serializer_data",
-    "field": "serializer_data.serializer_data",
-    "rule": "Field 'serializer_data.serializer_data' must exist in response.",
-    "status": "PASS",
-    "detail": "pass",
-    "constraint_type": "required",
-    "source": "schema"
-  },
-  {
     "id": "type_serializer_data_serializer_data",
     "field": "serializer_data.serializer_data",
     "rule": "Field 'serializer_data.serializer_data' must be of type 'array'.",
     "status": "PASS",
     "detail": "pass",
     "constraint_type": "type",
+    "source": "schema"
+  },
+  {
+    "id": "required_serializer_data_total_size",
+    "field": "serializer_data.total_size",
+    "rule": "Field 'serializer_data.total_size' must exist in response.",
+    "status": "PASS",
+    "detail": "pass",
+    "constraint_type": "required",
+    "source": "schema"
+  },
+  {
+    "id": "required_serializer_data_limit",
+    "field": "serializer_data.limit",
+    "rule": "Field 'serializer_data.limit' must exist in response.",
+    "status": "PASS",
+    "detail": "pass",
+    "constraint_type": "required",
+    "source": "schema"
+  },
+  {
+    "id": "required_serializer_data_start",
+    "field": "serializer_data.start",
+    "rule": "Field 'serializer_data.start' must exist in response.",
+    "status": "PASS",
+    "detail": "pass",
+    "constraint_type": "required",
+    "source": "schema"
+  },
+  {
+    "id": "required_serializer_data_serializer_data",
+    "field": "serializer_data.serializer_data",
+    "rule": "Field 'serializer_data.serializer_data' must exist in response.",
+    "status": "PASS",
+    "detail": "pass",
+    "constraint_type": "required",
     "source": "schema"
   },
   {
