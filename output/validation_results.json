@@ -1,0 +1,688 @@
+[
+  {
+    "id": "required_serializer_data",
+    "field": "serializer_data",
+    "rule": "Field 'serializer_data' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_start",
+    "field": "serializer_data.start",
+    "rule": "Field 'serializer_data.start' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data",
+    "field": "serializer_data.serializer_data",
+    "rule": "Field 'serializer_data.serializer_data' must be of type 'array'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_total_size",
+    "field": "serializer_data.total_size",
+    "rule": "Field 'serializer_data.total_size' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_total_size",
+    "field": "serializer_data.total_size",
+    "rule": "Field 'serializer_data.total_size' must be of type 'string'.",
+    "status": "FAIL",
+    "detail": "expected string, got int (value=7)"
+  },
+  {
+    "id": "required_serializer_data_limit",
+    "field": "serializer_data.limit",
+    "rule": "Field 'serializer_data.limit' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_limit",
+    "field": "serializer_data.limit",
+    "rule": "Field 'serializer_data.limit' must be of type 'string'.",
+    "status": "FAIL",
+    "detail": "expected string, got int (value=10)"
+  },
+  {
+    "id": "required_serializer_data_start",
+    "field": "serializer_data.start",
+    "rule": "Field 'serializer_data.start' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_page",
+    "field": "serializer_data.page",
+    "rule": "Field 'serializer_data.page' must exist in response.",
+    "status": "FAIL",
+    "detail": "missing field 'serializer_data.page'"
+  },
+  {
+    "id": "type_serializer_data_page",
+    "field": "serializer_data.page",
+    "rule": "Field 'serializer_data.page' must be of type 'integer'.",
+    "status": "FAIL",
+    "detail": "missing field 'serializer_data.page'"
+  },
+  {
+    "id": "required_serializer_data_serializer_data",
+    "field": "serializer_data.serializer_data",
+    "rule": "Field 'serializer_data.serializer_data' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_id_0",
+    "field": "serializer_data.serializer_data[0].id",
+    "rule": "Field 'serializer_data.serializer_data[*].id' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_id_1",
+    "field": "serializer_data.serializer_data[1].id",
+    "rule": "Field 'serializer_data.serializer_data[*].id' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_id_2",
+    "field": "serializer_data.serializer_data[2].id",
+    "rule": "Field 'serializer_data.serializer_data[*].id' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_id_0",
+    "field": "serializer_data.serializer_data[0].id",
+    "rule": "Field 'serializer_data.serializer_data[*].id' must be of type 'integer'.",
+    "status": "FAIL",
+    "detail": "expected integer, got str (value='5')"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_id_1",
+    "field": "serializer_data.serializer_data[1].id",
+    "rule": "Field 'serializer_data.serializer_data[*].id' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_id_2",
+    "field": "serializer_data.serializer_data[2].id",
+    "rule": "Field 'serializer_data.serializer_data[*].id' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_name_0",
+    "field": "serializer_data.serializer_data[0].name",
+    "rule": "Field 'serializer_data.serializer_data[*].name' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_name_1",
+    "field": "serializer_data.serializer_data[1].name",
+    "rule": "Field 'serializer_data.serializer_data[*].name' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_name_2",
+    "field": "serializer_data.serializer_data[2].name",
+    "rule": "Field 'serializer_data.serializer_data[*].name' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_name_0",
+    "field": "serializer_data.serializer_data[0].name",
+    "rule": "Field 'serializer_data.serializer_data[*].name' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_name_1",
+    "field": "serializer_data.serializer_data[1].name",
+    "rule": "Field 'serializer_data.serializer_data[*].name' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_name_2",
+    "field": "serializer_data.serializer_data[2].name",
+    "rule": "Field 'serializer_data.serializer_data[*].name' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_name_en_0",
+    "field": "serializer_data.serializer_data[0].name_en",
+    "rule": "Field 'serializer_data.serializer_data[*].name_en' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_name_en_1",
+    "field": "serializer_data.serializer_data[1].name_en",
+    "rule": "Field 'serializer_data.serializer_data[*].name_en' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_name_en_2",
+    "field": "serializer_data.serializer_data[2].name_en",
+    "rule": "Field 'serializer_data.serializer_data[*].name_en' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_code_0",
+    "field": "serializer_data.serializer_data[0].code",
+    "rule": "Field 'serializer_data.serializer_data[*].code' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_code_1",
+    "field": "serializer_data.serializer_data[1].code",
+    "rule": "Field 'serializer_data.serializer_data[*].code' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_code_2",
+    "field": "serializer_data.serializer_data[2].code",
+    "rule": "Field 'serializer_data.serializer_data[*].code' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_code_0",
+    "field": "serializer_data.serializer_data[0].code",
+    "rule": "Field 'serializer_data.serializer_data[*].code' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_code_1",
+    "field": "serializer_data.serializer_data[1].code",
+    "rule": "Field 'serializer_data.serializer_data[*].code' must be of type 'string'.",
+    "status": "FAIL",
+    "detail": "expected string, got int (value=16000438408)"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_code_2",
+    "field": "serializer_data.serializer_data[2].code",
+    "rule": "Field 'serializer_data.serializer_data[*].code' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_quantity_0",
+    "field": "serializer_data.serializer_data[0].quantity",
+    "rule": "Field 'serializer_data.serializer_data[*].quantity' must be of type 'number'.",
+    "status": "FAIL",
+    "detail": "expected number, got str (value='23')"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_quantity_1",
+    "field": "serializer_data.serializer_data[1].quantity",
+    "rule": "Field 'serializer_data.serializer_data[*].quantity' must be of type 'number'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_quantity_2",
+    "field": "serializer_data.serializer_data[2].quantity",
+    "rule": "Field 'serializer_data.serializer_data[*].quantity' must be of type 'number'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_image_0",
+    "field": "serializer_data.serializer_data[0].image",
+    "rule": "Field 'serializer_data.serializer_data[*].image' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_image_1",
+    "field": "serializer_data.serializer_data[1].image",
+    "rule": "Field 'serializer_data.serializer_data[*].image' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_image_2",
+    "field": "serializer_data.serializer_data[2].image",
+    "rule": "Field 'serializer_data.serializer_data[*].image' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_sell_price_0",
+    "field": "serializer_data.serializer_data[0].sell_price",
+    "rule": "Field 'serializer_data.serializer_data[*].sell_price' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_sell_price_1",
+    "field": "serializer_data.serializer_data[1].sell_price",
+    "rule": "Field 'serializer_data.serializer_data[*].sell_price' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_sell_price_2",
+    "field": "serializer_data.serializer_data[2].sell_price",
+    "rule": "Field 'serializer_data.serializer_data[*].sell_price' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_sell_price_0",
+    "field": "serializer_data.serializer_data[0].sell_price",
+    "rule": "Field 'serializer_data.serializer_data[*].sell_price' must be of type 'number'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_sell_price_1",
+    "field": "serializer_data.serializer_data[1].sell_price",
+    "rule": "Field 'serializer_data.serializer_data[*].sell_price' must be of type 'number'.",
+    "status": "FAIL",
+    "detail": "expected number, got str (value='15.0')"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_sell_price_2",
+    "field": "serializer_data.serializer_data[2].sell_price",
+    "rule": "Field 'serializer_data.serializer_data[*].sell_price' must be of type 'number'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_actual_price_0",
+    "field": "serializer_data.serializer_data[0].actual_price",
+    "rule": "Field 'serializer_data.serializer_data[*].actual_price' must be of type 'number'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_actual_price_1",
+    "field": "serializer_data.serializer_data[1].actual_price",
+    "rule": "Field 'serializer_data.serializer_data[*].actual_price' must be of type 'number'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_actual_price_2",
+    "field": "serializer_data.serializer_data[2].actual_price",
+    "rule": "Field 'serializer_data.serializer_data[*].actual_price' must be of type 'number'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_discount_price_0",
+    "field": "serializer_data.serializer_data[0].discount_price",
+    "rule": "Field 'serializer_data.serializer_data[*].discount_price' must be of type 'number'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_discount_price_1",
+    "field": "serializer_data.serializer_data[1].discount_price",
+    "rule": "Field 'serializer_data.serializer_data[*].discount_price' must be of type 'number'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_discount_price_2",
+    "field": "serializer_data.serializer_data[2].discount_price",
+    "rule": "Field 'serializer_data.serializer_data[*].discount_price' must be of type 'number'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_discounted_quantity_0",
+    "field": "serializer_data.serializer_data[0].discounted_quantity",
+    "rule": "Field 'serializer_data.serializer_data[*].discounted_quantity' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_discounted_quantity_1",
+    "field": "serializer_data.serializer_data[1].discounted_quantity",
+    "rule": "Field 'serializer_data.serializer_data[*].discounted_quantity' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_discounted_quantity_2",
+    "field": "serializer_data.serializer_data[2].discounted_quantity",
+    "rule": "Field 'serializer_data.serializer_data[*].discounted_quantity' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_shop_0",
+    "field": "serializer_data.serializer_data[0].shop",
+    "rule": "Field 'serializer_data.serializer_data[*].shop' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_shop_1",
+    "field": "serializer_data.serializer_data[1].shop",
+    "rule": "Field 'serializer_data.serializer_data[*].shop' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_shop_2",
+    "field": "serializer_data.serializer_data[2].shop",
+    "rule": "Field 'serializer_data.serializer_data[*].shop' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_shop_0",
+    "field": "serializer_data.serializer_data[0].shop",
+    "rule": "Field 'serializer_data.serializer_data[*].shop' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_shop_1",
+    "field": "serializer_data.serializer_data[1].shop",
+    "rule": "Field 'serializer_data.serializer_data[*].shop' must be of type 'integer'.",
+    "status": "FAIL",
+    "detail": "expected integer, got str (value='2')"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_shop_2",
+    "field": "serializer_data.serializer_data[2].shop",
+    "rule": "Field 'serializer_data.serializer_data[*].shop' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_unit_id_0",
+    "field": "serializer_data.serializer_data[0].unit.id",
+    "rule": "Field 'serializer_data.serializer_data[*].unit.id' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_unit_id_1",
+    "field": "serializer_data.serializer_data[1].unit.id",
+    "rule": "Field 'serializer_data.serializer_data[*].unit.id' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_unit_id_2",
+    "field": "serializer_data.serializer_data[2].unit.id",
+    "rule": "Field 'serializer_data.serializer_data[*].unit.id' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_unit_id_0",
+    "field": "serializer_data.serializer_data[0].unit.id",
+    "rule": "Field 'serializer_data.serializer_data[*].unit.id' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_unit_id_1",
+    "field": "serializer_data.serializer_data[1].unit.id",
+    "rule": "Field 'serializer_data.serializer_data[*].unit.id' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_unit_id_2",
+    "field": "serializer_data.serializer_data[2].unit.id",
+    "rule": "Field 'serializer_data.serializer_data[*].unit.id' must be of type 'integer'.",
+    "status": "FAIL",
+    "detail": "expected integer, got str (value='3')"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_unit_name_0",
+    "field": "serializer_data.serializer_data[0].unit.name",
+    "rule": "Field 'serializer_data.serializer_data[*].unit.name' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_unit_name_1",
+    "field": "serializer_data.serializer_data[1].unit.name",
+    "rule": "Field 'serializer_data.serializer_data[*].unit.name' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_unit_name_2",
+    "field": "serializer_data.serializer_data[2].unit.name",
+    "rule": "Field 'serializer_data.serializer_data[*].unit.name' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_unit_name_0",
+    "field": "serializer_data.serializer_data[0].unit.name",
+    "rule": "Field 'serializer_data.serializer_data[*].unit.name' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_unit_name_1",
+    "field": "serializer_data.serializer_data[1].unit.name",
+    "rule": "Field 'serializer_data.serializer_data[*].unit.name' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_unit_name_2",
+    "field": "serializer_data.serializer_data[2].unit.name",
+    "rule": "Field 'serializer_data.serializer_data[*].unit.name' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_unit_size_0",
+    "field": "serializer_data.serializer_data[0].unit.size",
+    "rule": "Field 'serializer_data.serializer_data[*].unit.size' must be of type 'integer'.",
+    "status": "FAIL",
+    "detail": "expected integer, got str (value='5')"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_unit_size_1",
+    "field": "serializer_data.serializer_data[1].unit.size",
+    "rule": "Field 'serializer_data.serializer_data[*].unit.size' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_unit_size_2",
+    "field": "serializer_data.serializer_data[2].unit.size",
+    "rule": "Field 'serializer_data.serializer_data[*].unit.size' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_vat_category_id_0",
+    "field": "serializer_data.serializer_data[0].vat_category.id",
+    "rule": "Field 'serializer_data.serializer_data[*].vat_category.id' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_vat_category_id_1",
+    "field": "serializer_data.serializer_data[1].vat_category.id",
+    "rule": "Field 'serializer_data.serializer_data[*].vat_category.id' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_vat_category_id_2",
+    "field": "serializer_data.serializer_data[2].vat_category.id",
+    "rule": "Field 'serializer_data.serializer_data[*].vat_category.id' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_vat_category_id_0",
+    "field": "serializer_data.serializer_data[0].vat_category.id",
+    "rule": "Field 'serializer_data.serializer_data[*].vat_category.id' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_vat_category_id_1",
+    "field": "serializer_data.serializer_data[1].vat_category.id",
+    "rule": "Field 'serializer_data.serializer_data[*].vat_category.id' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_vat_category_id_2",
+    "field": "serializer_data.serializer_data[2].vat_category.id",
+    "rule": "Field 'serializer_data.serializer_data[*].vat_category.id' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_vat_category_name_0",
+    "field": "serializer_data.serializer_data[0].vat_category.name",
+    "rule": "Field 'serializer_data.serializer_data[*].vat_category.name' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_vat_category_name_1",
+    "field": "serializer_data.serializer_data[1].vat_category.name",
+    "rule": "Field 'serializer_data.serializer_data[*].vat_category.name' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_vat_category_name_2",
+    "field": "serializer_data.serializer_data[2].vat_category.name",
+    "rule": "Field 'serializer_data.serializer_data[*].vat_category.name' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_vat_category_name_0",
+    "field": "serializer_data.serializer_data[0].vat_category.name",
+    "rule": "Field 'serializer_data.serializer_data[*].vat_category.name' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_vat_category_name_1",
+    "field": "serializer_data.serializer_data[1].vat_category.name",
+    "rule": "Field 'serializer_data.serializer_data[*].vat_category.name' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_vat_category_name_2",
+    "field": "serializer_data.serializer_data[2].vat_category.name",
+    "rule": "Field 'serializer_data.serializer_data[*].vat_category.name' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_category_id_0",
+    "field": "serializer_data.serializer_data[0].category.id",
+    "rule": "Field 'serializer_data.serializer_data[*].category.id' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_category_id_1",
+    "field": "serializer_data.serializer_data[1].category.id",
+    "rule": "Field 'serializer_data.serializer_data[*].category.id' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_category_id_2",
+    "field": "serializer_data.serializer_data[2].category.id",
+    "rule": "Field 'serializer_data.serializer_data[*].category.id' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_category_id_0",
+    "field": "serializer_data.serializer_data[0].category.id",
+    "rule": "Field 'serializer_data.serializer_data[*].category.id' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_category_id_1",
+    "field": "serializer_data.serializer_data[1].category.id",
+    "rule": "Field 'serializer_data.serializer_data[*].category.id' must be of type 'integer'.",
+    "status": "FAIL",
+    "detail": "expected integer, got str (value='4')"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_category_id_2",
+    "field": "serializer_data.serializer_data[2].category.id",
+    "rule": "Field 'serializer_data.serializer_data[*].category.id' must be of type 'integer'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_category_name_0",
+    "field": "serializer_data.serializer_data[0].category.name",
+    "rule": "Field 'serializer_data.serializer_data[*].category.name' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_category_name_1",
+    "field": "serializer_data.serializer_data[1].category.name",
+    "rule": "Field 'serializer_data.serializer_data[*].category.name' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "required_serializer_data_serializer_data_items_category_name_2",
+    "field": "serializer_data.serializer_data[2].category.name",
+    "rule": "Field 'serializer_data.serializer_data[*].category.name' must exist in response.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_category_name_0",
+    "field": "serializer_data.serializer_data[0].category.name",
+    "rule": "Field 'serializer_data.serializer_data[*].category.name' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_category_name_1",
+    "field": "serializer_data.serializer_data[1].category.name",
+    "rule": "Field 'serializer_data.serializer_data[*].category.name' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  },
+  {
+    "id": "type_serializer_data_serializer_data_items_category_name_2",
+    "field": "serializer_data.serializer_data[2].category.name",
+    "rule": "Field 'serializer_data.serializer_data[*].category.name' must be of type 'string'.",
+    "status": "PASS",
+    "detail": "pass"
+  }
+]
