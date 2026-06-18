@@ -1,92 +1,104 @@
 # Oracle Mining Report
 
 - Endpoint: `GET /shop/2/category/4/items/?start=0&limit=10&language_code=en`
-- Mining source: `llm(llama-3.3-70b-versatile)`
-- Constraints checked: 98
-- PASS: 86
+- Mining source: `fallback(llm_parse_error)`
+- Constraints checked: 109
+- PASS: 97
 - FAIL: 12
-- Unique mismatch fields: 11
+- Unique mismatch fields: 12
 
-## Mismatches (spec vs reality)
+## Schema mismatches (spec vs reality)
 
-### Mismatch #1
-- Field: `serializer_data.total_size`
-- Rule: Field 'serializer_data.total_size' must be of type 'string'.
-- Detail: expected string, got int (value=7)
-
-### Mismatch #2
-- Field: `serializer_data.limit`
-- Rule: Field 'serializer_data.limit' must be of type 'string'.
-- Detail: expected string, got int (value=10)
-
-### Mismatch #3
-- Field: `serializer_data.page`
-- Rule: Field 'serializer_data.page' must exist in response.
-- Detail: missing field 'serializer_data.page'
-
-### Mismatch #4
-- Field: `serializer_data.serializer_data[0].id`
-- Rule: Field 'serializer_data.serializer_data[*].id' must be of type 'integer'.
-- Detail: expected integer, got str (value='5')
-
-### Mismatch #5
+### Schema mismatch #1
 - Field: `serializer_data.serializer_data[1].code`
 - Rule: Field 'serializer_data.serializer_data[*].code' must be of type 'string'.
 - Detail: expected string, got int (value=16000438408)
 
-### Mismatch #6
+### Schema mismatch #2
 - Field: `serializer_data.serializer_data[0].quantity`
 - Rule: Field 'serializer_data.serializer_data[*].quantity' must be of type 'number'.
 - Detail: expected number, got str (value='23')
 
-### Mismatch #7
+### Schema mismatch #3
 - Field: `serializer_data.serializer_data[1].sell_price`
 - Rule: Field 'serializer_data.serializer_data[*].sell_price' must be of type 'number'.
 - Detail: expected number, got str (value='15.0')
 
-### Mismatch #8
-- Field: `serializer_data.serializer_data[1].shop`
-- Rule: Field 'serializer_data.serializer_data[*].shop' must be of type 'integer'.
-- Detail: expected integer, got str (value='2')
+## Downstream assumption mismatches (nullable field assumed present)
 
-### Mismatch #9
-- Field: `serializer_data.serializer_data[2].unit.id`
-- Rule: Field 'serializer_data.serializer_data[*].unit.id' must be of type 'integer'.
-- Detail: expected integer, got str (value='3')
+### Downstream mismatch #1
+- Field: `serializer_data.serializer_data[0].name_en`
+- Rule: Downstream assumes 'serializer_data.serializer_data[*].name_en' is present and non-null (spec marks it nullable).
+- Detail: nullable in spec but downstream assumes present (value=None)
 
-### Mismatch #10
-- Field: `serializer_data.serializer_data[0].unit.size`
-- Rule: Field 'serializer_data.serializer_data[*].unit.size' must be of type 'integer'.
-- Detail: expected integer, got str (value='5')
+### Downstream mismatch #2
+- Field: `serializer_data.serializer_data[1].name_en`
+- Rule: Downstream assumes 'serializer_data.serializer_data[*].name_en' is present and non-null (spec marks it nullable).
+- Detail: nullable in spec but downstream assumes present (value=None)
 
-### Mismatch #11
-- Field: `serializer_data.serializer_data[1].category.id`
-- Rule: Field 'serializer_data.serializer_data[*].category.id' must be of type 'integer'.
-- Detail: expected integer, got str (value='4')
+### Downstream mismatch #3
+- Field: `serializer_data.serializer_data[2].name_en`
+- Rule: Downstream assumes 'serializer_data.serializer_data[*].name_en' is present and non-null (spec marks it nullable).
+- Detail: nullable in spec but downstream assumes present (value=None)
+
+### Downstream mismatch #4
+- Field: `serializer_data.serializer_data[0].image`
+- Rule: Downstream assumes 'serializer_data.serializer_data[*].image' is present and non-null (spec marks it nullable).
+- Detail: nullable in spec but downstream assumes present (value=None)
+
+### Downstream mismatch #5
+- Field: `serializer_data.serializer_data[1].image`
+- Rule: Downstream assumes 'serializer_data.serializer_data[*].image' is present and non-null (spec marks it nullable).
+- Detail: nullable in spec but downstream assumes present (value=None)
+
+### Downstream mismatch #6
+- Field: `serializer_data.serializer_data[0].discount_price`
+- Rule: Downstream assumes 'serializer_data.serializer_data[*].discount_price' is present and non-null (spec marks it nullable).
+- Detail: nullable in spec but downstream assumes present (value=None)
+
+### Downstream mismatch #7
+- Field: `serializer_data.serializer_data[1].discount_price`
+- Rule: Downstream assumes 'serializer_data.serializer_data[*].discount_price' is present and non-null (spec marks it nullable).
+- Detail: nullable in spec but downstream assumes present (value=None)
+
+### Downstream mismatch #8
+- Field: `serializer_data.serializer_data[0].discounted_quantity`
+- Rule: Downstream assumes 'serializer_data.serializer_data[*].discounted_quantity' is present and non-null (spec marks it nullable).
+- Detail: nullable in spec but downstream assumes present (value=None)
+
+### Downstream mismatch #9
+- Field: `serializer_data.serializer_data[1].discounted_quantity`
+- Rule: Downstream assumes 'serializer_data.serializer_data[*].discounted_quantity' is present and non-null (spec marks it nullable).
+- Detail: nullable in spec but downstream assumes present (value=None)
 
 ## All checks
 
-- [FAIL] `serializer_data.total_size` :: expected string, got int (value=7)
-- [FAIL] `serializer_data.limit` :: expected string, got int (value=10)
-- [FAIL] `serializer_data.page` :: missing field 'serializer_data.page'
-- [FAIL] `serializer_data.serializer_data[0].id` :: expected integer, got str (value='5')
 - [FAIL] `serializer_data.serializer_data[1].code` :: expected string, got int (value=16000438408)
 - [FAIL] `serializer_data.serializer_data[0].quantity` :: expected number, got str (value='23')
 - [FAIL] `serializer_data.serializer_data[1].sell_price` :: expected number, got str (value='15.0')
-- [FAIL] `serializer_data.serializer_data[1].shop` :: expected integer, got str (value='2')
-- [FAIL] `serializer_data.serializer_data[2].unit.id` :: expected integer, got str (value='3')
-- [FAIL] `serializer_data.serializer_data[0].unit.size` :: expected integer, got str (value='5')
-- [FAIL] `serializer_data.serializer_data[1].category.id` :: expected integer, got str (value='4')
+- [FAIL] `serializer_data.serializer_data[0].name_en` :: nullable in spec but downstream assumes present (value=None)
+- [FAIL] `serializer_data.serializer_data[1].name_en` :: nullable in spec but downstream assumes present (value=None)
+- [FAIL] `serializer_data.serializer_data[2].name_en` :: nullable in spec but downstream assumes present (value=None)
+- [FAIL] `serializer_data.serializer_data[0].image` :: nullable in spec but downstream assumes present (value=None)
+- [FAIL] `serializer_data.serializer_data[1].image` :: nullable in spec but downstream assumes present (value=None)
+- [FAIL] `serializer_data.serializer_data[0].discount_price` :: nullable in spec but downstream assumes present (value=None)
+- [FAIL] `serializer_data.serializer_data[1].discount_price` :: nullable in spec but downstream assumes present (value=None)
+- [FAIL] `serializer_data.serializer_data[0].discounted_quantity` :: nullable in spec but downstream assumes present (value=None)
+- [FAIL] `serializer_data.serializer_data[1].discounted_quantity` :: nullable in spec but downstream assumes present (value=None)
 - [PASS] `serializer_data` :: pass
-- [PASS] `serializer_data.start` :: pass
-- [PASS] `serializer_data.serializer_data` :: pass
+- [PASS] `serializer_data` :: pass
+- [PASS] `serializer_data.total_size` :: pass
 - [PASS] `serializer_data.total_size` :: pass
 - [PASS] `serializer_data.limit` :: pass
+- [PASS] `serializer_data.limit` :: pass
 - [PASS] `serializer_data.start` :: pass
+- [PASS] `serializer_data.start` :: pass
+- [PASS] `serializer_data.serializer_data` :: pass
 - [PASS] `serializer_data.serializer_data` :: pass
 - [PASS] `serializer_data.serializer_data[0].id` :: pass
 - [PASS] `serializer_data.serializer_data[1].id` :: pass
 - [PASS] `serializer_data.serializer_data[2].id` :: pass
+- [PASS] `serializer_data.serializer_data[0].id` :: pass
 - [PASS] `serializer_data.serializer_data[1].id` :: pass
 - [PASS] `serializer_data.serializer_data[2].id` :: pass
 - [PASS] `serializer_data.serializer_data[0].name` :: pass
@@ -126,18 +138,21 @@
 - [PASS] `serializer_data.serializer_data[1].shop` :: pass
 - [PASS] `serializer_data.serializer_data[2].shop` :: pass
 - [PASS] `serializer_data.serializer_data[0].shop` :: pass
+- [PASS] `serializer_data.serializer_data[1].shop` :: pass
 - [PASS] `serializer_data.serializer_data[2].shop` :: pass
 - [PASS] `serializer_data.serializer_data[0].unit.id` :: pass
 - [PASS] `serializer_data.serializer_data[1].unit.id` :: pass
 - [PASS] `serializer_data.serializer_data[2].unit.id` :: pass
 - [PASS] `serializer_data.serializer_data[0].unit.id` :: pass
 - [PASS] `serializer_data.serializer_data[1].unit.id` :: pass
+- [PASS] `serializer_data.serializer_data[2].unit.id` :: pass
 - [PASS] `serializer_data.serializer_data[0].unit.name` :: pass
 - [PASS] `serializer_data.serializer_data[1].unit.name` :: pass
 - [PASS] `serializer_data.serializer_data[2].unit.name` :: pass
 - [PASS] `serializer_data.serializer_data[0].unit.name` :: pass
 - [PASS] `serializer_data.serializer_data[1].unit.name` :: pass
 - [PASS] `serializer_data.serializer_data[2].unit.name` :: pass
+- [PASS] `serializer_data.serializer_data[0].unit.size` :: pass
 - [PASS] `serializer_data.serializer_data[1].unit.size` :: pass
 - [PASS] `serializer_data.serializer_data[2].unit.size` :: pass
 - [PASS] `serializer_data.serializer_data[0].vat_category.id` :: pass
@@ -156,6 +171,7 @@
 - [PASS] `serializer_data.serializer_data[1].category.id` :: pass
 - [PASS] `serializer_data.serializer_data[2].category.id` :: pass
 - [PASS] `serializer_data.serializer_data[0].category.id` :: pass
+- [PASS] `serializer_data.serializer_data[1].category.id` :: pass
 - [PASS] `serializer_data.serializer_data[2].category.id` :: pass
 - [PASS] `serializer_data.serializer_data[0].category.name` :: pass
 - [PASS] `serializer_data.serializer_data[1].category.name` :: pass
@@ -163,3 +179,6 @@
 - [PASS] `serializer_data.serializer_data[0].category.name` :: pass
 - [PASS] `serializer_data.serializer_data[1].category.name` :: pass
 - [PASS] `serializer_data.serializer_data[2].category.name` :: pass
+- [PASS] `serializer_data.serializer_data[2].image` :: pass
+- [PASS] `serializer_data.serializer_data[2].discount_price` :: pass
+- [PASS] `serializer_data.serializer_data[2].discounted_quantity` :: pass
