@@ -50,6 +50,14 @@ python run.py --live
 
 See `output/report.md` for the full PASS/FAIL breakdown (mismatches are deduplicated per field).
 
+### Schema mismatches: null on non-nullable fields
+
+When the API returns `null` for a field that is **not** marked `nullable: true` in the spec, schema validation fails with:
+
+`null returned but field is not nullable in spec`
+
+The demo fixture sets `null` on required non-nullable fields such as `name`, `code`, and `sell_price` while leaving nullable fields (`name_en`, `image`, etc.) as either values or allowed `null`.
+
 ### Nullable fields and downstream assumptions
 
 The demo spec marks several item fields as `nullable: true` (`name_en`, `image`, `discount_price`, `discounted_quantity`). Schema validation **allows** `null` for those fields.
