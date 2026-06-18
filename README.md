@@ -50,6 +50,14 @@ python run.py --live
 
 See `output/report.md` for the full PASS/FAIL breakdown (mismatches are deduplicated per field).
 
+### Nullable fields and downstream assumptions
+
+The demo spec marks several item fields as `nullable: true` (`name_en`, `image`, `discount_price`, `discounted_quantity`). Schema validation **allows** `null` for those fields.
+
+A second oracle layer checks **downstream assumptions**: consumers that treat nullable fields as always present. When the fixture returns `null`, schema checks pass but downstream checks fail with:
+
+`nullable in spec but downstream assumes present (value=None)`
+
 Use your own endpoint/spec:
 
 ```bash
