@@ -12,6 +12,7 @@ from src.llm_oracle_miner import mine_constraints_with_oc
 from src.schema_constraints import (
     dedupe_failures_by_field,
     expand_array_constraints,
+    extract_downstream_constraints,
     extract_schema_constraints,
     merge_constraints,
 )
@@ -40,7 +41,8 @@ def main() -> None:
         model=args.model,
     )
     schema_constraints = extract_schema_constraints(endpoint_schema.response_schema)
-    constraints = merge_constraints(llm_constraints, schema_constraints)
+    downstream_constraints = extract_downstream_constraints(endpoint_schema.response_schema)
+    constraints = merge_constraints(llm_constraints, schema_constraints, downstream_constraints)
 
     response_json = load_response(args, base_url)
     response_path = out_dir / "response.json"
@@ -59,7 +61,8 @@ def main() -> None:
 
     fail_count = sum(1 for r in results if r["status"] == "FAIL")
     pass_count = len(results) - fail_count
-    failures = dedupe_failures_by_field(results)
+    schema_failures, downstream_failures = split_failures(results)
+    failures = schema_failures + downstream_failures
 
     print("=== RBCTest-style Oracle Mining Demo ===")
     print(f"Source: {source}")
@@ -79,12 +82,29 @@ def main() -> None:
     for row in ordered_results:
         print(f"- [{row['status']}] {row['field']} :: {row['detail']}")
 
-    if failures:
-        print("\nMismatches found:")
-        for row in failures:
+    if schema_failures:
+        print("\nSchema mismatches:")
+        for row in schema_failures:
             print(f"- {row['field']}: {row['detail']}")
-    else:
+
+    if downstream_failures:
+        print("\nDownstream assumption mismatches (nullable field assumed present):")
+        for row in downstream_failures:
+            print(f"- {row['field']}: {row['detail']}")
+
+    if not failures:
         print("\nNo mismatches found. Tighten the spec or try another endpoint.")
+
+
+def split_failures(results: list[dict]) -> tuple[list[dict], list[dict]]:
+    all_failures = [r for r in results if r["status"] == "FAIL"]
+    downstream = dedupe_failures_by_field(
+        [r for r in all_failures if r.get("constraint_type") == "downstream_present"]
+    )
+    schema = dedupe_failures_by_field(
+        [r for r in all_failures if r.get("constraint_type") != "downstream_present"]
+    )
+    return schema, downstream
 
 
 def build_report(
@@ -93,7 +113,8 @@ def build_report(
     constraints: list[dict],
     results: list[dict],
 ) -> str:
-    failures = dedupe_failures_by_field(results)
+    schema_failures, downstream_failures = split_failures(results)
+    failures = schema_failures + downstream_failures
     passes = [r for r in results if r["status"] == "PASS"]
 
     lines = [
@@ -108,19 +129,38 @@ def build_report(
         "",
     ]
 
-    if failures:
-        lines.extend(["## Mismatches (spec vs reality)", ""])
-        for i, row in enumerate(failures, start=1):
+    if schema_failures:
+        lines.extend(["## Schema mismatches (spec vs reality)", ""])
+        for i, row in enumerate(schema_failures, start=1):
             lines.extend(
                 [
-                    f"### Mismatch #{i}",
+                    f"### Schema mismatch #{i}",
                     f"- Field: `{row['field']}`",
                     f"- Rule: {row['rule']}",
                     f"- Detail: {row['detail']}",
                     "",
                 ]
             )
-    else:
+
+    if downstream_failures:
+        lines.extend(
+            [
+                "## Downstream assumption mismatches (nullable field assumed present)",
+                "",
+            ]
+        )
+        for i, row in enumerate(downstream_failures, start=1):
+            lines.extend(
+                [
+                    f"### Downstream mismatch #{i}",
+                    f"- Field: `{row['field']}`",
+                    f"- Rule: {row['rule']}",
+                    f"- Detail: {row['detail']}",
+                    "",
+                ]
+            )
+
+    if not failures:
         lines.append("No mismatches detected.")
 
     lines.extend(["## All checks", ""])
