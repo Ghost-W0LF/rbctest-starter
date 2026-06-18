@@ -4,9 +4,6 @@
 venv/
 env/
 
-# Generated output
-output/
-
 # Python
 __pycache__/
 *.py[cod]
