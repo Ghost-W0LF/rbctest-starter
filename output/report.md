@@ -1,7 +1,7 @@
 # Oracle Mining Report
 
 - Endpoint: `GET /shop/2/category/4/items/?start=0&limit=10&language_code=en`
-- Mining source: `fallback(llm_parse_error)`
+- Mining source: `Source: llm(llama-3.3-70b-versatile)`
 - Constraints checked: 109
 - PASS: 99
 - FAIL: 10
