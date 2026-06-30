@@ -15,10 +15,10 @@ dist/
 *.egg-info/
 .eggs/
 *.egg
-.env.example
 
-# Output
-output/response.json
+# Local demo/recording working files
+demo/
+demo-review/
 
 
 # Testing / tooling
